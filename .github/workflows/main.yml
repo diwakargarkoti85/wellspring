@@ -41,7 +41,7 @@ jobs:
           subscription-id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
           client-secret: ${{ secrets.ARM_CLIENT_SECRET }}
           # Set auth-type to 'device-code' to resolve possible token fetch issues
-          auth-type: device-code
+          auth-type: SERVICE_PRINCIPAL
 
       # Initialize Terraform configuration
       - name: 'Terraform Init'
