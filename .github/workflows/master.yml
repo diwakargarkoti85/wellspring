@@ -28,9 +28,9 @@ jobs:
         with:
           terraform_version: 1.5.0
       - name: Terraform Init
-        run: terraform init
+        run: terraform init -auto-approve
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan -auto-approve
       - name: Terraform Apply
         run: >-
           terraform apply -auto-approve 
