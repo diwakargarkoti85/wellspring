@@ -31,6 +31,6 @@ jobs:
         run: terraform init -migrate-state
       - name: Terraform Plan
         run: terraform plan -out=tfplan
-      - name: Terraform Apply
-        run: terraform apply "tfplan"
+      - name: Terraform destroy
+        run: terraform apply -auto-approve
  
