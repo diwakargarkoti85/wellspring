@@ -9,9 +9,6 @@ on:
       - master
   workflow_dispatch:
 
-permissions:
-  id-token: write  # Ensure permission is set for GitHub Actions to fetch the federated token
-
 env:
   TF_VERSION: '1.7.4'
   AZURE_PROVIDER_VERSION: '~> 3.80.0'
@@ -37,12 +34,10 @@ jobs:
         uses: azure/login@v2
         with:
           client-id: ${{ secrets.ARM_CLIENT_ID }}
+          client-secret: ${{ secrets.ARM_CLIENT_SECRET }}
           tenant-id: ${{ secrets.ARM_TENANT_ID }}
           subscription-id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-          client-secret: ${{ secrets.ARM_CLIENT_SECRET }}
-          # Set auth-type to 'device-code' to resolve possible token fetch issues
-          auth-type: SERVICE_PRINCIPAL
-
+         
       # Initialize Terraform configuration
       - name: 'Terraform Init'
         run: terraform init
