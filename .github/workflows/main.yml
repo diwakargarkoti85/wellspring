@@ -1,6 +1,12 @@
 name: Terraform Apply
 'on':
-  workflow_dispatch:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch: null
   
 jobs:
   terraform-apply:
