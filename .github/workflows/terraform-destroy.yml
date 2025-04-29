@@ -10,6 +10,9 @@ name: Terraform Apply
       - main
   workflow_dispatch: null
   
+env:
+  TF_WORKING_DIR: ./
+  
 jobs:
   terraform-apply:
     name: Terraform Apply
@@ -29,6 +32,8 @@ jobs:
           terraform_version: 1.5.0
       - name: Terraform Init
         run: terraform init
+        working-directory: ${{ env.TF_WORKING_DIR }}
       - name: Terraform Destroy
         run: >-
           terraform destroy -auto-approve 
+        working-directory: ${{ env.TF_WORKING_DIR }}
